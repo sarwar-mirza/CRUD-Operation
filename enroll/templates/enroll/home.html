@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+
+<!--Inherit title-->
+{% block title %}Home{% endblock title %}
+
+<!--Inherit content -->
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+
+        {% for pro in products %}
+          <div class="col-sm-4 mt-3">
+            <div class="card">
+                <img src="{{pro.product_pic.url}}" class="card-img-top" alt="images" height="200px">
+                <div class="card-body">
+                  <h5 class="card-title">{{pro.title}}</h5>
+                  <p class="card-text text-truncate">{{pro.description}}</p>
+                  
+                  <footer>
+                    <p class="card-text">{{pro.date}}</p>
+                  </footer>
+                  <p><a href="{% url 'details-page' pro.id %}">Car features Details</a></p>
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

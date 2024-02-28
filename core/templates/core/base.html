@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}    <!--Load Static file-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- dynamic title -->
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="{% static 'core/css/fontawesome.css' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+    <!-- navbar -->
+    {% include "core/navbar.html" %}
+
+    <!-- Inherit block -->
+    {% block content %}
+      
+    {% endblock content %}
+
+
+
+    <!-- jeuery, popper, bootstrap, fontawesome -->
+    <script src="{% static 'core/js/jquery.js' %}"></script>
+    <script src="{% static 'core/js/popper.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/all.min.js' %}"></script>
+
+</body>
+</html>

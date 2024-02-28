@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+<!-- Inherit Title -->
+{% block title %}Details{% endblock title %}
+
+<!-- Inherit block content -->
+{% block content %}
+  <div class="container">
+    <div class="row mt-5">
+
+      <div class="col-sm-6">
+        <img src="{{details.product_pic.url}}" alt="" srcset="" height="450" class="w-75">
+      </div>
+
+      <div class="col-sm-6 mt-5">
+            <h5 class="card-title">{{details.title}}</h5> <hr>
+            <p class="card-text">{{details.description}}</p>
+            <p class="card-text">{{details.date}}</p>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

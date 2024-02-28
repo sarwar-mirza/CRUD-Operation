@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+
+<!--Inherit title-->
+{% block title %}Dashboard{% endblock title %}
+
+<!-- Inherit content -->
+{% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-3 border-end mt-5">
+          <p class="alert alert-info text-center fw-bold mt-2">Profile</p>
+          <p class="text-center fw-bold mt-3">Welcome to {{request.user.username|capfirst}}</>
+        </div>
+
+        <div class="col-sm-9  mt-5">
+          <h6 class="alert alert-secondary text-center fw-bold mt-2">CRUD- Operation</h6>
+
+          <a href="{% url 'img-upload-page' %}" class="btn btn-primary mt-3">Image Upload</a>
+
+          <!-- Showing table in product -->
+          <table class="table table-hover mt-3">
+            <thead>
+              <tr class="text-center">
+                <th scope="col" style="width: 2%;">ID</th>
+                <th scope="col" style="width: 18%;">Title</th>
+                <th scope="col" style="width: 65%;">Description</th>
+                <th scope="col" style="width: 15%;">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for img in images %}
+                <tr>
+                    <th scope="row">{{img.id}}</th>
+                    <td class="text-center">{{img.title}}</td>
+                    <td>{{img.description}}</td>
+                    <td class="">
+                        <a href="{% url 'update-page' img.id %}" class="btn btn-primary btn-sm">Update</a>
+
+                        <form action="{% url 'delete-page' img.id %}" method="POST" class="d-inline">
+                          {% csrf_token %}
+                          <input type="submit" class="btn btn-warning btn-sm" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
